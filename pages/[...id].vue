@@ -64,10 +64,11 @@ import { useAuth } from "~/stores/auth";
 const authStore = useAuth();
 const snackbars = useSnackbar();
 const cartStore = useCart();
+const config = useRuntimeConfig();
 const user = useCookie("auth");
 const route = useRoute();
 const { data: poruduct } = await useFetch(
-  `http://localhost:9000/product/${route.params.id}`
+  `${config.baseUrl}product/${route.params.id}`
 );
 
 const counter = useState("counter", () => 1);

@@ -31,8 +31,9 @@ definePageMeta({
 });
 const orderStore = useOrder();
 const authStore = useAuth();
+const config = useRuntimeConfig();
 const { data: order } = await useAsyncData("order", () =>
-  $fetch(`http://localhost:9000/order/product/${authStore.Authenticator.sub}`)
+  $fetch(`${config.baseUrl}order/product/${authStore.Authenticator.sub}`)
 );
 </script>
 

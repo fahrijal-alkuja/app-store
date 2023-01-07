@@ -62,11 +62,12 @@
 import { useCart } from "~/stores/cart";
 import { useAuth } from "~/stores/auth";
 import { useOrder } from "~/stores/order";
+const config = useRuntimeConfig();
 const cartStore = useCart();
 const authStore = useAuth();
 const orderStore = useOrder();
 const { data: profile } = await useAsyncData("profile", () =>
-  $fetch(`http://localhost:9000/profile/${authStore.Authenticator.sub}`)
+  $fetch(`${config.baseUrl}profile/${authStore.Authenticator.sub}`)
 );
 const Products = computed(() => {
   return Object.keys(cartStore.cart).map((id) => {

@@ -62,26 +62,30 @@
             </v-col>
           </v-row>
 
-          <v-btn color="error" class="mr-4" @click="edit"> Edit </v-btn>
+          <v-btn color="error" class="mr-4" @click="edit"> Update Profile </v-btn>
         </v-container>
       </v-form>
     </v-card>
   </v-container>
+  <TheSnackbar />
 </template>
 
 <script setup>
 import { useAuth } from "~/stores/auth";
 import { useProfile } from "~/stores/profile";
+import { useSnackbar } from "~/stores/snackbar";
 
 definePageMeta({
   layout: "default",
   middleware: ["user"],
 });
+const snackbars = useSnackbar();
 const valid = ref(false);
 const authStore = useAuth();
 const profileStore = useProfile();
+const config = useRuntimeConfig();
 const { data: profile } = await useAsyncData("profile", () =>
-  $fetch(`http://localhost:9000/profile/${authStore.Authenticator.sub}`)
+  $fetch(`${config.baseUrl}profile/${authStore.Authenticator.sub}`)
 );
 
 const profileItem = ref({
@@ -100,6 +104,9 @@ const profileItem = ref({
 
 const edit = async () => {
   await profileStore.updateProfile(profileItem.value);
+  snackbars.setSnackbar({
+      text: `Data Berhasil Diubah.`,
+    });
 };
 </script>
 

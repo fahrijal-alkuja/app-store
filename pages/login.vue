@@ -40,6 +40,7 @@ import { useAuth } from "~/stores/auth";
 import { useSnackbar } from "~/stores/snackbar";
 const snackbars = useSnackbar();
 const authStore = useAuth();
+const config = useRuntimeConfig();
 const email = ref("rizal.alkuja@gmail.com");
 const password = ref("alkuja07");
 const valid = ref(false);
@@ -62,12 +63,12 @@ const login = async () => {
       password: password.value,
     };
 
-    const user = await useFetch("http://127.0.0.1:9000/auth/signin", {
+    const user = await useFetch(`${config.baseUrl}auth/signin`, {
       method: "POST",
       body: form,
     });
 
-    const userInfo = await useFetch(`http://127.0.0.1:9000/auth`, {
+    const userInfo = await useFetch(`${config.baseUrl}auth`, {
       method: "Get",
       headers: {
         Authorization: `Bearer ${user.data.value.accessToken}`,

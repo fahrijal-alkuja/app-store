@@ -86,8 +86,10 @@
 </template>
 
 <script setup>
+const config = useRuntimeConfig();
+
 const { data: products } = await useAsyncData("product", () =>
-  $fetch("http://localhost:9000/product")
+  $fetch(`${config.baseUrl}product`)
 );
 
 const sortBy = ref("");

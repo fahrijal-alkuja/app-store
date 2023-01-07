@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-const apiUrl = 'http://localhost:9000/order'
+
 
 export const useOrder = defineStore('order-store', {
     state: () => ({
@@ -7,7 +7,7 @@ export const useOrder = defineStore('order-store', {
     }),
     actions: {
         async addNewOrder(order: any) {
-            const response = await fetch(`${apiUrl}`, {
+            const response = await fetch(`${useRuntimeConfig().public.baseUrl}order`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

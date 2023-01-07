@@ -1,5 +1,4 @@
 import { defineStore } from "pinia";
-const url = 'http://127.0.0.1:9000/';
 
 export const useUsersStore = defineStore('users-store', {
     state: () => ({
@@ -10,13 +9,13 @@ export const useUsersStore = defineStore('users-store', {
     },
     actions: {
         async getUsers() {
-            const response = await fetch(`${url}users`);
+            const response = await fetch(`${useRuntimeConfig().public.baseUrl}users`);
             const data = await response.json();
             this.users = data;
         },
         // add new users
         async addNewUsers(users: any) {
-            const response = await fetch(`${url}users`, {
+            const response = await fetch(`${useRuntimeConfig().public.baseUrl}users`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -28,7 +27,7 @@ export const useUsersStore = defineStore('users-store', {
         },
         // update
         async updateUsers(users: any) {
-            const response = await fetch(`${url}users/${users.id}`, {
+            const response = await fetch(`${useRuntimeConfig().public.baseUrl}users/${users.id}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json'
@@ -41,7 +40,7 @@ export const useUsersStore = defineStore('users-store', {
         },
         // delete jadwal
         async deleteUsers(id: string) {
-            await fetch(`${url}users/${id}`, {
+            await fetch(`${useRuntimeConfig().public.baseUrl}users/${id}`, {
                 method: 'DELETE'
             });
             const index = this.users.findIndex((item: any) => item.id === id);

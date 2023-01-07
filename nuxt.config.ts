@@ -3,7 +3,7 @@ export default defineNuxtConfig({
     runtimeConfig: {
         public: {
             sitename: 'Store',
-            // baseUrl: 'http://localhost:9000/',
+            baseUrl: process.env.API_BASE_URL,
         },
 
     },

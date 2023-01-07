@@ -1,5 +1,4 @@
 import { defineStore } from "pinia";
-const apiUrl = 'http://localhost:9000/profile'
 export const useProfile = defineStore('profile-store', {
 
     state: () => ({
@@ -7,7 +6,7 @@ export const useProfile = defineStore('profile-store', {
     }),
     actions: {
         async newProfile(profile: any) {
-            const response = await fetch(`${apiUrl}`, {
+            const response = await fetch(`${useRuntimeConfig().public.baseUrl}profile`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -18,7 +17,7 @@ export const useProfile = defineStore('profile-store', {
             this.items.push(data);
         },
         async updateProfile(profile: any) {
-            const response = await fetch(`${apiUrl}/${profile.id}`, {
+            const response = await fetch(`${useRuntimeConfig().public.baseUrl}profile/${profile.id}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json'

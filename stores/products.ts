@@ -1,5 +1,4 @@
 import { defineStore } from "pinia";
-const apiUrl = 'http://localhost:9000/product'
 export const useProductStore = defineStore('product-store', {
     state: () => ({
         items: {} as any,
@@ -7,12 +6,12 @@ export const useProductStore = defineStore('product-store', {
 
     actions: {
         async getAll() {
-            const response = await fetch(`${apiUrl}`);
+            const response = await fetch(`${useRuntimeConfig().public.baseUrl}product`);
             const data = await response.json();
             this.items = data;
         },
         async addNewProduct(product: any) {
-            const response = await fetch(`${apiUrl}`, {
+            const response = await fetch(`${useRuntimeConfig().public.baseUrl}product`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -23,7 +22,7 @@ export const useProductStore = defineStore('product-store', {
             this.items.push(data);
         },
         async updateProduct(product: any) {
-            const response = await fetch(`${apiUrl}/${product.id}`, {
+            const response = await fetch(`${useRuntimeConfig().public.baseUrl}product/${product.id}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json'
@@ -36,7 +35,7 @@ export const useProductStore = defineStore('product-store', {
         },
 
         async deleteProduct(id: string) {
-            await fetch(`${apiUrl}/${id}`, {
+            await fetch(`${useRuntimeConfig().public.baseUrl}product/${id}`, {
                 method: 'DELETE'
             });
             const index = this.items.findIndex((item: any) => item.id === id);
