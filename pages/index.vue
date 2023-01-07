@@ -87,7 +87,7 @@
 
 <script setup>
 const { data: products } = await useAsyncData("product", () =>
-  $fetch("http://localhost:5000/product")
+  $fetch("http://localhost:9000/product")
 );
 
 const sortBy = ref("");

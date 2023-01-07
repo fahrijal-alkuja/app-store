@@ -66,7 +66,7 @@ const cartStore = useCart();
 const authStore = useAuth();
 const orderStore = useOrder();
 const { data: profile } = await useAsyncData("profile", () =>
-  $fetch(`http://localhost:5000/profile/${authStore.Authenticator.sub}`)
+  $fetch(`http://localhost:9000/profile/${authStore.Authenticator.sub}`)
 );
 const Products = computed(() => {
   return Object.keys(cartStore.cart).map((id) => {
@@ -79,21 +79,27 @@ const Products = computed(() => {
 });
 
 const orderNow = async () => {
-  const order = Object.keys(cartStore.cart).map((id) => {
-    return {
-      user_id: authStore.Authenticator.sub,
-      product_id: cartStore.cart[id].id,
-      // price: cartStore.cart[id].price,
-      qt: cartStore.cart[id].quantity.toString(),
-      tanggal: Date.now().toString(),
-      total: cartStore.total.toString(),
-      status: "Pending",
-    };
-  });
-  await orderStore.addNewOrder(order);
-  cartStore.clear();
-  navigateTo("/users/history");
+  if (!profile.value) {
+    navigateTo("/users/profile");
+  } else {
+    const order = Object.keys(cartStore.cart).map((id) => {
+      return {
+        user_id: authStore.Authenticator.sub,
+        product_id: cartStore.cart[id].id,
+        // price: cartStore.cart[id].price,
+        qt: cartStore.cart[id].quantity.toString(),
+        tanggal: Date.now().toString(),
+        total: cartStore.total.toString(),
+        status: "Pending",
+      };
+    });
+    await orderStore.addNewOrder(order);
+    cartStore.clear();
+    navigateTo("/users/history");
+  }
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+
+</style>

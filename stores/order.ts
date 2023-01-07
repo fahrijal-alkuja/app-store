@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-const apiUrl = 'http://localhost:5000/order'
+const apiUrl = 'http://localhost:9000/order'
 
 export const useOrder = defineStore('order-store', {
     state: () => ({

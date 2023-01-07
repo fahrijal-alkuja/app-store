@@ -67,7 +67,7 @@ const cartStore = useCart();
 const user = useCookie("auth");
 const route = useRoute();
 const { data: poruduct } = await useFetch(
-  `http://localhost:5000/product/${route.params.id}`
+  `http://localhost:9000/product/${route.params.id}`
 );
 
 const counter = useState("counter", () => 1);

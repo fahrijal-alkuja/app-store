@@ -32,7 +32,7 @@ definePageMeta({
 const orderStore = useOrder();
 const authStore = useAuth();
 const { data: order } = await useAsyncData("order", () =>
-  $fetch(`http://localhost:5000/order/product/${authStore.Authenticator.sub}`)
+  $fetch(`http://localhost:9000/order/product/${authStore.Authenticator.sub}`)
 );
 </script>
 

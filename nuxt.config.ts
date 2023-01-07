@@ -3,7 +3,7 @@ export default defineNuxtConfig({
     runtimeConfig: {
         public: {
             sitename: 'Store',
-            baseUrl: 'http://localhost:5000/',
+            // baseUrl: 'http://localhost:9000/',
         },
 
     },

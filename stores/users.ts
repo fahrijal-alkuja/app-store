@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-const url = 'http://127.0.0.1:5000/';
+const url = 'http://127.0.0.1:9000/';
 
 export const useUsersStore = defineStore('users-store', {
     state: () => ({
