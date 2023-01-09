@@ -62,7 +62,9 @@
             </v-col>
           </v-row>
 
-          <v-btn color="error" class="mr-4" @click="edit"> Update Profile </v-btn>
+          <v-btn color="error" class="mr-4" @click="edit">
+            Update Profile
+          </v-btn>
         </v-container>
       </v-form>
     </v-card>
@@ -103,10 +105,17 @@ const profileItem = ref({
 });
 
 const edit = async () => {
-  await profileStore.updateProfile(profileItem.value);
-  snackbars.setSnackbar({
+  if (!profile.value) {
+    await profileStore.newProfile(profileItem.value);
+    snackbars.setSnackbar({
+      text: `Data Berhasil Ditambahkan.`,
+    });
+  } else {
+    await profileStore.updateProfile(profileItem.value);
+    snackbars.setSnackbar({
       text: `Data Berhasil Diubah.`,
     });
+  }
 };
 </script>
 

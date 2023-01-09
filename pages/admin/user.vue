@@ -46,6 +46,7 @@
                         <v-row>
                           <v-col cols="12" sm="6" md="4">
                             <v-text-field
+                              variant="outlined"
                               v-model="editedItem.name"
                               label="Nama"
                               :rules="[rules.required]"
@@ -53,6 +54,7 @@
                           </v-col>
                           <v-col cols="12" sm="6" md="4">
                             <v-text-field
+                              variant="outlined"
                               v-model="editedItem.email"
                               label="Email"
                               :rules="[rules.required]"
@@ -60,6 +62,7 @@
                           </v-col>
                           <v-col cols="12" sm="6" md="4">
                             <v-text-field
+                              variant="outlined"
                               v-model="editedItem.password"
                               label="Password"
                               :rules="[rules.required]"
@@ -67,6 +70,7 @@
                           </v-col>
                           <v-col cols="12" sm="6" md="4">
                             <v-autocomplete
+                              variant="outlined"
                               v-model="editedItem.rules"
                               :items="['admin', 'user']"
                               label="Rules"

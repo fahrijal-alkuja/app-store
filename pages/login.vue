@@ -4,6 +4,7 @@
     <v-card-text>
       <v-form ref="form" v-model="valid" lazy-validation>
         <v-text-field
+          variant="outlined"
           v-model="email"
           :rules="emailRules"
           label="Email"
@@ -12,6 +13,7 @@
           type="email"
         ></v-text-field>
         <v-text-field
+          variant="outlined"
           v-model="password"
           :rules="passwordRules"
           label="Password"
@@ -46,13 +48,13 @@ const password = ref("alkuja07");
 const valid = ref(false);
 const show = ref(false);
 const emailRules = [
-    (v) => !!v || "Email is required",
-    (v) => /.+@.+/.test(v) || "Email must be valid",
-  ],
-  passwordRules = [
-    (v) => !!v || "Password is required",
-    (v) => v.length >= 8 || "Password must be at least 8 characters",
-  ];
+  (v) => !!v || "Email is required",
+  (v) => /.+@.+/.test(v) || "Email must be valid",
+];
+const passwordRules = [
+  (v) => !!v || "Password is required",
+  (v) => v.length >= 8 || "Password must be at least 8 characters",
+];
 
 const login = async () => {
   if (!valid) return;

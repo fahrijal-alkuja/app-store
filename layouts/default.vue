@@ -32,7 +32,13 @@
       <v-btn v-if="authStore.Authenticator" @click="logout()">
         <v-icon>mdi-account-remove</v-icon> Logout
       </v-btn>
-      <v-btn v-else to="/login"> <v-icon>mdi-account-key</v-icon> Login </v-btn>
+      <v-btn v-if="!authStore.Authenticator" to="/login">
+        <v-icon>mdi-account-key</v-icon> Login
+      </v-btn>
+      <v-btn v-if="!authStore.Authenticator" to="/register">
+        <v-icon>mdi-account-key</v-icon> Register
+      </v-btn>
+
       <!-- login -->
     </v-app-bar>
     <v-main>
