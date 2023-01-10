@@ -17,16 +17,22 @@
                     <v-row>
                       <v-col cols="12" md="6">
                         <v-text-field
+                          variant="outlined"
+                          color="primary"
                           v-model="productItem.title"
                           label="Title"
                           required
                         ></v-text-field>
                         <v-text-field
+                          variant="outlined"
+                          color="primary"
                           v-model="productItem.price"
                           label="Price"
                           required
                         ></v-text-field>
                         <v-text-field
+                          variant="outlined"
+                          color="primary"
                           v-model="productItem.image"
                           label="Image"
                           required
@@ -34,11 +40,15 @@
                       </v-col>
                       <v-col cols="12" md="6">
                         <v-autocomplete
+                          variant="outlined"
+                          color="primary"
                           v-model="productItem.category"
                           label="Kategori"
                           :items="['Lapotop', 'Monitor', 'HP']"
                         ></v-autocomplete>
                         <v-textarea
+                          variant="outlined"
+                          color="primary"
                           v-model="productItem.description"
                           label="Deskripsi"
                         ></v-textarea>

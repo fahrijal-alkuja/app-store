@@ -61,6 +61,11 @@ const items = [
     title: "Product",
     to: "/admin/product",
   },
+  {
+    icon: "mdi-store",
+    title: "Order",
+    to: "/admin/order",
+  },
 ];
 
 const logout = () => {
