@@ -25,5 +25,11 @@ export default defineNuxtConfig({
     "@pinia/nuxt",
     "@pinia-plugin-persistedstate/nuxt",
     "@nuxt/image-edge",
+    "@kevinmarrec/nuxt-pwa",
   ],
+  pwa: {
+    workbox: {
+      enabled: true,
+    },
+  },
 });
