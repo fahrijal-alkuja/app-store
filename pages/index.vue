@@ -1,5 +1,5 @@
 <template>
-  <VContainer fluid>
+  <v-container fluid>
     <v-row>
       <v-col cols="12" md="2">
         <v-card class="py-2 px-3">
@@ -75,14 +75,14 @@
         <v-pagination
           class="mt-6"
           v-model="page"
-          :length="length"
+          :length="lengths"
           rounded="circle"
           prev-icon="mdi-menu-left"
           next-icon="mdi-menu-right"
         ></v-pagination>
       </v-col>
     </v-row>
-  </VContainer>
+  </v-container>
 </template>
 
 <script setup>
@@ -96,7 +96,8 @@ const sortBy = ref("");
 const order = ref("asending");
 const search = ref("");
 let perPage = 10;
-let length = Math.ceil(products.value.length / perPage);
+// let lengths = Math.ceil(products.value.length / perPage);
+const lengths = computed(() => Math.ceil(products.value.length / perPage));
 const page = ref(1);
 
 const filterProducts = computed(() => {

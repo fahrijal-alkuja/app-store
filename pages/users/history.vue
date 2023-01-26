@@ -1,6 +1,6 @@
 <template>
-  <VContainer>
-    <VTable density="compact">
+  <v-container>
+    <v-table density="compact">
       <thead>
         <tr>
           <th>Barang</th>
@@ -17,8 +17,8 @@
           <td>{{ item.status }}</td>
         </tr>
       </tbody>
-    </VTable>
-  </VContainer>
+    </v-table>
+  </v-container>
 </template>
 
 <script setup>

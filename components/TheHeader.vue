@@ -27,5 +27,3 @@ const logout = () => {
     </v-btn>
   </v-app-bar>
 </template>
-
-<style scoped></style>

@@ -24,5 +24,3 @@ import { useSnackbar } from "~/stores/snackbar";
 const snackbars = useSnackbar();
 const snackbar = ref(false);
 </script>
-
-<style lang="scss" scoped></style>

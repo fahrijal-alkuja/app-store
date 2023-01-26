@@ -41,5 +41,3 @@ const { data: order } = await useAsyncData("order", () =>
     </v-card>
   </v-container>
 </template>
-
-<style scoped></style>

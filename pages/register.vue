@@ -105,5 +105,3 @@ const register = async () => {
   }
 };
 </script>
-
-<style></style>
